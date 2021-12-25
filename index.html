@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0"> -->
+    <title>Classic Cars</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <header class="bg-dark p-2 text-white">
+        <div class="d-flex justify-content-center">
+            <h1> Classic Cars </h1>
+        </div>
+    </header>
+    <main class="mt-4">
+        <div class="align-middle d-flex">
+            <div class>
+                <nav class="navbar navbar-light">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                            aria-labelledby="offcanvasNavbarLabel">
+                            <div class="offcanvas-header">
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <div class="ms-4">
+                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                        <li class="nav-item">
+                                            <a class="nav-link fs-4" aria-current="page" href="#">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link fs-4" href="#" class="btn btn-primary" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#tables-menu"
+                                                aria-expanded="false" aria-controls="tables-menu">Tables</a>
+                                            <div class="collapse" id="tables-menu">
+                                                <div id="tables-names-menu" class="list-group"></div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link fs-4" href="#">About</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="h-50 position-absolute start-50 translate-middle-x" style="width: 90%;">
+                <div class="d-flex justify-content-center">
+                    <div class="ms-3">
+                        <button class="btn btn-secondary text-dark" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#insert-panel" aria-expanded="false"
+                            aria-controls="insert-panel">Insert</button>
+                    </div>
+                    <div class="ms-3">
+                        <button class="btn btn-secondary text-dark" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#search-panel" aria-expanded="false"
+                            aria-controls="search-panel">Search</button>
+                    </div>
+                    <div class="ms-3">
+                        <button class="btn btn-secondary text-dark" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#queries-panel" aria-expanded="false"
+                            aria-controls="queries-panel">Queries</button>
+                    </div>
+                </div>
+                <div id="p_options" class="w-100 mt-3 d-flex">
+                    <div class="w-50 collapse position-absolute start-50 translate-middle-x" id="insert-panel"
+                        style="height: 90vh;" data-bs-parent="#p_options">
+                        <div class="p-5 w-100 d-inline-block card card-body" style="height: 80vh; overflow-y: auto;">
+                            <div class="position-absolute start-50 translate-middle-x">
+                                <div>
+                                    <div class="form-floating">
+                                        <select class="form-select bg-light" id="insert-tables"
+                                            aria-label="Floating label select example">
+
+                                        </select>
+                                        <label for="insert-tables">Select table</label>
+                                    </div>
+                                </div>
+                                <div class="pb-5 input-group mb-3 mt-3">
+                                    <div>
+                                        <div id="all_search_atts">
+
+                                        </div>
+                                        <div class="mt-2 d-flex justify-content-center">
+                                            <button id="insert_btn" type="button" class="btn btn-success ms-2"
+                                                aria-label=""> Insert
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-50 collapse position-absolute start-50 translate-middle-x" id="search-panel"
+                        style="height: 90vh;" data-bs-parent="#p_options">
+                        <div class="p-5 w-100 d-inline-block card card-body" style="height: 80vh; overflow-y: auto;">
+                            <div class="position-absolute start-50 translate-middle-x">
+                                <div class=" btn-group">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        id="search-attrs-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select Attributes
+                                    </button>
+                                    <ul id="insertion-table-attributes" class="p-0 dropdown-menu"
+                                        aria-labelledby="search-attrs-btn">
+                                    </ul>
+                                </div>
+                                <div class="w-100 pb-5 input-group mb-3 mt-3">
+                                    <div>
+                                        <div id="all_input_atts">
+                                        </div>
+                                        <div class="mt-2 d-flex justify-content-center">
+                                            <button id="add_search_item" type="button" class="btn btn-secondary"
+                                                aria-label=""> Add
+                                            </button>
+                                            <button id="search_btn" type="button" class="btn btn-success ms-2"
+                                                aria-label=""> Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-50 collapse position-absolute start-50 translate-middle-x" id="queries-panel"
+                        data-bs-parent="#p_options">
+                        <div class="w-100 p-5 card card-body">
+                            Some placeholder content for the collapse component. This panel is hidden by default but
+                            revealed when the user activates the relevant trigger.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div id="main-table-area" class="overflow-auto">
+                <table class="table table-striped">
+                    <thead>
+                        <tr id="table-headers"></tr>
+                    </thead>
+                    <tbody id="table-content"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="src/script.js"></script>
+</body>
+
+</html>
